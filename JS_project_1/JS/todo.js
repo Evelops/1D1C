@@ -2,7 +2,7 @@ const toDoForm=document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList=document.getElementById("todo-list");
 
-const toDos =[];
+let toDos =[];
 const TODOS_KEY="todos"; 
 
 function saveToDos(){
@@ -40,14 +40,15 @@ function handleToDoSubmit(event){
 }
 toDoForm.addEventListener("submit",handleToDoSubmit);
 
-function sayHello(item){
+/*function sayHello(item){
     console.log("this is the turn of", item);
-}
+} */ //  51 Line 과 같은 역할 51 Line 과 같이 바꾸어 줄 시, 함수를 따로 만들지 않고 더 짧은 코드를 사용해  줄 수 있다.  
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if(savedToDos!==null) {
     const parsedToDos = JSON.parse(savedToDos);
-     parsedToDos.forEach(sayHello);
+    toDos=parsedToDos;
+     parsedToDos.forEach(paintToDo);
 }
 
