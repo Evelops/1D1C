@@ -11,6 +11,8 @@ function saveToDos(){
 }
 
 
+ 
+
 function deleteToDo(event){
     const li = event.target.parentElement; // event.target => 선택된 객체의 대한 정보 그 각 버튼에 대한 property를 찾아서 각각의 객체가 가지고 있는 위치를 찾아낼 수 있고 그것을 다음과 같이 명시하여 각 li에 추가된 객체를 삭제할 수 있는 함수.
     console.log(li.id);
@@ -40,7 +42,7 @@ function handleToDoSubmit(event){
         id:Date.now(),
     };
     toDos.push(newTodoObj); // toDos라는 사용자가 입력한 toDos 값을 하나 입력할 때마다  위에 선언한 newTodoObj객체 값을 push 해줌. 
-    paintToDo(newTodoObj); // 해당 함수에 newTodoObj 객체 형식을 다시 넣어줌. 
+    paintToDo(newTodoObj); // 해당 함수에 newTodoObj 객체 형식을 다시 넣어줌.=> 원래 paintodo는 newTodo라는 text를 가지고 있었는데 이제 부터 newTodoObj라는 객체를 가지게됨.
     saveToDos(); // ToDos를 localStorage에 저장해주는 함수를 호출하여 해당 newTodo가 생성될때마다 local에 저장함. 
 
 }
@@ -57,6 +59,6 @@ if(savedToDos!==null) {
     const parsedToDos = JSON.parse(savedToDos); // savedToDos 값을 json 형식 => {name: "~", id:"~"} 으로 변환 해줘 이때 local에 저장되어 있는 형태를 각각
     console.log(parsedToDos);
     toDos=parsedToDos;
-     parsedToDos.forEach(paintToDo);
+     parsedToDos.forEach(paintToDo); //forEach함수는 painToDo를 parsedToDos 배열의 요소마다 실행함.
 }
 
